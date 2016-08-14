@@ -1,13 +1,37 @@
 <form ng-submit="vm.addParty()" class="form-inline party-form">
     <div class="form-group" d>
-        <input type="text" class="form-control" placeholder="Name" require>
+        <input type="text" class="form-control" placeholder="Name"  ng-model="vm.newParty.name" require>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="phone" require>
+        <input ng-model="vm.newParty.phone" type="text" class="form-control" placeholder="phone" require>
     </div>
     <div class="form-group">
-        <input type="number" class="form-control" placeholder="Size of party" require>
+        <input ng-model="vm.newParty.size" type="number" class="form-control" placeholder="Size of party" require>
     </div>
     <button type="submit" class="btn btn-primary" >Add party</button>
 </form>
-{{vm.parties}}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Done?</th>
+            <th>info</th>
+            <th>Notified</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="party in vm.parties">
+    <td>
+        
+    </td>
+    <td>
+        <div><strong>{{party.name}} {{party.size}} people</strong></div>
+        <div>{{party.phone}}</div>
+    </td>
+    <td>
+        <div>{{party.notified ? 'yes' : 'No'}}</div>
+    </td>
+    <td>
+        
+    </td>    
+    </tr>
+</table>
