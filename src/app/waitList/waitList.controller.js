@@ -17,16 +17,33 @@
       var vm = this;
      
       var fireParties = firebase.database().ref('parties');
-      
-      vm.parties =  $firebaseArray(fireParties);
-      vm.newParty = new Party();
+      var fireTextMessages = firebase.database().ref('textMessages');
+       
+     
       function addParty() {
           vm.parties.$add(vm.newParty);
           vm.newParty = new Party();
       }
       
-      vm.addParty = addParty;
+      function removeParty(party) {
+          vm.parties.$remove(party);
+      }
       
+      function sendTextMessage(party) {
+          var newTextMessage = {
+              phoneNumber: party.phone,
+              size: party.size,
+              name: party.name
+          };
+          fireTextMessages.push(newTextMessage);
+          party.notified = true;
+          vm.parties.$save(party);
+      }
+       vm.newParty = new Party();
+      vm.parties = $firebaseArray(fireParties);
+      vm.addParty = addParty;
+      vm.removeParty = removeParty;
+      vm.sendTextMessage = sendTextMessage;
   }
    
 })();
