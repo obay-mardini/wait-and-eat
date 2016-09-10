@@ -3,17 +3,14 @@
     
     angular
         .module('app.waitList')
-    .config(configFunction);
-    
+        .config(configFunction);
     configFunction.$inject = ['$routeProvider'];
-    
     function configFunction($routeProvider) {
-        $routeProvider.when('/waitList', {
+        $routeProvider.when('/waitlist', {
             templateUrl: 'app/waitList/waitList.html',
-           controller: 'WaitListController',
+            controller: 'waitListController',
             controllerAs: 'vm'
         });
+        
     }
-    
-    
 })();
