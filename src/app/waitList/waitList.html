@@ -20,8 +20,8 @@
         </tr>
     </thead>
     <tr ng-repeat="party in vm.parties">
-        <td>{{party.name}}</td><td><strong>{{party.name}} {{party.size}}   people</strong></td><td>{{party.notified ? 'yes' : 'No'}}</td><td><button ng-click="vm.removeParty(party)" class='btn btn-danger'>Remove</button>
-        <button class="btn btn-danger"></button>
+        <td><input type="checkbox" ng-model="party.done" ng-change="vm.toggleDone(party)"></td><td><strong>{{party.name}} {{party.size}}   people</strong></td><td>{{party.notified ? 'yes' : 'No'}}</td><td><button ng-click="vm.removeParty(party)" class='btn btn-danger'>Remove</button>
+        <button ng-click="vm.sendTextMessage(party)" class="btn btn-success">Send SMS</button>
         </td>
     </tr>
 </table>
