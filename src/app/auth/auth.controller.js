@@ -4,12 +4,10 @@
     angular
         .module('app.auth')
         .controller('AuthController',AuthController);
-    AuthController.$inject = ["$location","$firebaseAuth"]
+    AuthController.$inject = ["$location","authService"]
     
-   function AuthController($location, $firebaseAuth) {
-       console.log($location)
+   function AuthController($location, authService) {
        var vm = this;
-       var firebaseAuthObject = $firebaseAuth();
        vm.user = {
            email: '',
            password: ''
@@ -18,8 +16,9 @@
        vm.register = register;
        vm.login = login;
        vm.logout = logout;
+       vm.isLoggedIn = authService.isLoggedIn;
        function register(user) {
-           return firebaseAuthObject.$createUserWithEmailAndPassword(user.email, user.password).then(function() {
+           return authService.register(user).then(function() {
                vm.login(user)
            }).catch(function(err) {
                console.log('errrrrir   ' + err)
@@ -27,9 +26,7 @@
        }
        
        function login(user) {
-           return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password).then(function(loggedInUser){
-               console.log(loggedInUser);
-               
+           return authService.login(user).then(function(loggedInUser){
                $location.path('/waitlist');
            }).catch(function(err) {
                console.log(err);
@@ -37,8 +34,9 @@
        }
        
        function logout() {
+           authService.logout();
            $location.path('/');
-           firebaseAuthObject.$signOut();
+           
        }
    }
 })();
