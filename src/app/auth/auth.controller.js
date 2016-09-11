@@ -7,6 +7,7 @@
     AuthController.$inject = ["$location","$firebaseAuth"]
     
    function AuthController($location, $firebaseAuth) {
+       console.log($location)
        var vm = this;
        var firebaseAuthObject = $firebaseAuth();
        vm.user = {
@@ -28,6 +29,8 @@
        function login(user) {
            return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password).then(function(loggedInUser){
                console.log(loggedInUser);
+               
+               $location.path('/waitlist');
            }).catch(function(err) {
                console.log(err);
            });
