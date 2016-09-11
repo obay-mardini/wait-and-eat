@@ -7,7 +7,8 @@
     //custom modules.
     'app.waitList',
     'app.landing',
-    'app.auth'
+    'app.auth',
+    'app.core'
    ]); 
     
 })();
