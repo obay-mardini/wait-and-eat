@@ -9,7 +9,7 @@
     function configFunction($routeProvider) {
         $routeProvider.when('/register', {
             templateUrl: 'app/auth/register.html',
-            controller: 'authController',
+            controller: 'AuthController',
             controllerAs: 'vm'
         });
     }
