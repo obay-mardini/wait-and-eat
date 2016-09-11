@@ -13,7 +13,8 @@
         vm.addParty = addParty;
         vm.removeParty = removeParty;
         vm.sendTextMessage = sendTextMessage;   
-        vm.parties = partyService.parties;
+        //vm.parties = partyService.parties;
+        vm.parties = partyService.getPartyByUser(user.uid)
         vm.toggleDone = toggleDone;
         
         console.log(user)
