@@ -8,7 +8,8 @@
     'app.waitList',
     'app.landing',
     'app.auth',
-    'app.core'
+    'app.core',
+    'app.layout'
    ]); 
     
 })();

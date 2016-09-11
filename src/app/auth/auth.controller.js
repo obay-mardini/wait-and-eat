@@ -15,8 +15,6 @@
        
        vm.register = register;
        vm.login = login;
-       vm.logout = logout;
-       vm.isLoggedIn = authService.isLoggedIn;
        function register(user) {
            return authService.register(user).then(function() {
                vm.login(user)
@@ -32,11 +30,6 @@
                console.log(err);
            });
        }
-       
-       function logout() {
-           authService.logout();
-           $location.path('/');
-           
-       }
+
    }
 })();

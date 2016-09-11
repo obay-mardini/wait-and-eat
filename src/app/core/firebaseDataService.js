@@ -10,6 +10,7 @@
 
     var service = {
       root: root,
+      users: root.child('users'),
       textMessageis: root.child('textMessages')
     };
 

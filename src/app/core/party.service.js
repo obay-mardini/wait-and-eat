@@ -13,7 +13,7 @@
       //those instance takes a child method 
       var service = {
           Party: Party,
-          parties: $firebaseArray(firebaseDataService.root.child('parties'))
+          getPartyByUser: getPartyByUser
       };
       return service;
       /////////
@@ -24,6 +24,11 @@
             this.size = '';
             this.done = false;
             this.notified = false;
+      }
+      
+      function getPartyByUser(uid) {
+          // to get the parties for a praticular user
+          return $firebaseArray(firebaseDataService.users.child(uid).child('parties'))
       }
   }
 })()
