@@ -13,12 +13,14 @@
            password: ''
        }
        
+       vm.error = null;
        vm.register = register;
        vm.login = login;
        function register(user) {
            return authService.register(user).then(function() {
                vm.login(user)
-           }).catch(function(err) {
+           }).catch(function(error) {
+               vm.error = error;
                console.log('errrrrir   ' + err)
            })
        }
@@ -27,6 +29,7 @@
            return authService.login(user).then(function(loggedInUser){
                $location.path('/waitlist');
            }).catch(function(error) {
+               console.log(error)
                vm.error = error;
            });
        }
