@@ -21,7 +21,6 @@
                vm.login(user)
            }).catch(function(error) {
                vm.error = error;
-               console.log('errrrrir   ' + err)
            })
        }
        
@@ -29,7 +28,6 @@
            return authService.login(user).then(function(loggedInUser){
                $location.path('/waitlist');
            }).catch(function(error) {
-               console.log(error)
                vm.error = error;
            });
        }
