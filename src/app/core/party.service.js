@@ -7,13 +7,15 @@
   
   partyService.$inject = ['$firebaseArray', 'firebaseDataService']
   function partyService($firebaseArray, firebaseDataService) {
+      var parties = null;
       //return object to be injected by the service
       
       //firebaseDataService return firebase instance at the root level
       //those instance takes a child method 
       var service = {
           Party: Party,
-          getPartyByUser: getPartyByUser
+          getPartyByUser: getPartyByUser,
+          reset: reset
       };
       return service;
       /////////
@@ -28,7 +30,14 @@
       
       function getPartyByUser(uid) {
           // to get the parties for a praticular user
-          return $firebaseArray(firebaseDataService.users.child(uid).child('parties'))
+          
+          parties = parties || $firebaseArray(firebaseDataService.users.child(uid).child('parties'));
+          return parties;
+      }
+      
+      function reset() {
+          parties.$destroy();
+          parties = null
       }
   }
 })()

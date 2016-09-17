@@ -17,6 +17,7 @@
         
     }
     resolveUser.$inject = ['authService'];
+    //this function returns a promise, if the promise's rejected so it will braodcast a routechange error with type auth required
     function resolveUser(authService) {
         return authService.firebaseAuthObject.$requireSignIn();
     }
