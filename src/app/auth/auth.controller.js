@@ -8,14 +8,11 @@
     
    function AuthController($location, authService) {
        var vm = this;
-       vm.user = {
-           email: '',
-           password: ''
-       }
        
        vm.error = null;
        vm.register = register;
        vm.login = login;
+       
        function register(user) {
            return authService.register(user).then(function() {
                vm.login(user)
