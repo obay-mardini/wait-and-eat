@@ -23,7 +23,7 @@
        
        function login(user) {
            return authService.login(user).then(function(loggedInUser){
-               $location.path('/waitlist');
+               $location.path('/waitList');
            }).catch(function(error) {
                vm.error = error;
            });
